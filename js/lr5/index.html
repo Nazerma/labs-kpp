@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Створення нового користувача</title>
+    <script>
+       
+        function createNewUser() {
+            
+            const firstName = prompt("Введіть ваше ім'я:");
+            const lastName = prompt("Введіть ваше прізвище:");
+            const birthday = prompt("Введіть вашу дату народження (у форматі dd.mm.yyyy):");
+            
+         
+            const newUser = {
+                firstName: firstName,
+                lastName: lastName,
+                birthday: birthday,
+
+                getLogin: function() {
+                    return this.firstName.charAt(0).toLowerCase() + this.lastName.toLowerCase();
+                },
+
+                
+                getAge: function() {
+                    const today = new Date();
+                    const birthDateParts = this.birthday.split('.');
+                    const birthDate = new Date(birthDateParts[2], birthDateParts[1] - 1, birthDateParts[0]);
+
+                    let age = today.getFullYear() - birthDate.getFullYear();
+                    const monthDiff = today.getMonth() - birthDate.getMonth();
+
+  
+                    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                        age--;
+                    }
+
+                    return age;
+                },
+
+                // Метод для отримання пароля
+                getPassword: function() {
+                    const birthYear = this.birthday.split('.')[2];
+                    return this.firstName.charAt(0).toUpperCase() + this.lastName.toLowerCase() + birthYear;
+                }
+            };
+
+            return newUser;
+        }
+
+        function run() {
+            const user = createNewUser();
+            console.log("Ваш логін: " + user.getLogin());
+            console.log("Ваш вік: " + user.getAge());
+            console.log("Ваш пароль: " + user.getPassword());
+        }
+    </script>
+</head>
+<body>
+    <h1>Створення нового користувача</h1>
+    <button onclick="run()">Створити користувача</button>
+</body>
+</html>

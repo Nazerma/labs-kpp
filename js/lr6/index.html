@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter By Data Type</title>
+</head>
+<body>
+    <h1>Filter Array by Data Type</h1>
+    
+    <script>
+        // Функція для фільтрації масиву за типом даних
+        function filterBy(arr, type) {
+            return arr.filter(item => typeof item !== type);
+        }
+
+        // Тестові дані
+        const arr = ['hello', 'world', 23, '23', null, true, undefined, { name: 'John' }];
+        
+        // Виклик функції
+        const result = filterBy(arr, 'string');
+        
+        // Виведення результату в консоль
+        console.log(result); // Очікуваний результат: [23, null, true, undefined, { name: 'John' }]
+    </script>
+</body>
+</html>

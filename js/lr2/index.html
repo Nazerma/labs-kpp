@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Multiples of 5</title>
+</head>
+<body>
+    <h1>Відкрийте консоль :> </h1>
+    <script>
+
+const userInput = parseInt(prompt('Введіть число, а програма виведе всі кратні пяти числа, починаючи від нуля і до заданого вами числа:'), 10);
+
+    let multiplesOfFive = [];
+
+
+    for (let i = 0; i <= userInput; i++) {
+        if (i % 5 === 0) {
+            multiplesOfFive.push(i);
+        }
+    }
+
+    if (multiplesOfFive.length > 0) {
+        console.log('Числа кратні 5:', multiplesOfFive);
+    } else {
+        console.log('Sorry, no numbers');
+    }
+
+
+
+    </script>
+</body>
+</html>
